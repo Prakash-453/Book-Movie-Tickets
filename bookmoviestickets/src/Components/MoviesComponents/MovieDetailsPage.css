@@ -46,7 +46,7 @@
   color: #666;
 }
 
-.additional-info p {
+.additional-info span {
   margin: 0.5rem 0;
   font-size: 1rem;
 }
@@ -80,7 +80,7 @@
   }
 
   #movie-poster img {
-    width: 100%; /* Make poster width responsive */
+    width: 100%; 
     max-width: 300px;
   }
 
@@ -114,4 +114,24 @@
     padding: 0.7rem;
     font-size: 1rem;
   }
+
+  .ReactModal__Content {
+    top: 20px;
+    bottom: 20px;
+    left: 10px;
+    right: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 95%; /* Adjust max-width for small screens */
+    margin: 0 auto;
+  }
+
+  .ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.85); /* Slightly darker overlay for small devices */
+  }
+
+  iframe {
+    height: 250px; /* Adjust height for smaller screens */
+  }
+
 }
