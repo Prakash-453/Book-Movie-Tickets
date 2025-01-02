@@ -11,7 +11,7 @@ function MovieCard({ title,name, genre, rating, votes, poster, onClick }) {
         <h4>{title}</h4>
         <p>{genre}</p>
         <p>
-          <span>⭐ {rating || "N/A"}</span> | {votes || "N/A"}
+          <span>⭐{rating || "N/A"}</span> | {votes || "N/A"}
         </p>
       </div>
     </div>

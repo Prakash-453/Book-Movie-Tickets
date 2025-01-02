@@ -3,8 +3,6 @@ import { useLocation } from "react-router-dom";
 import Modal from "react-modal";
 import "./MovieDetailsPage.css";
 
-Modal.setAppElement("#root"); // Ensure accessibility for screen readers
-
 function MovieDetailsPage() {
   const location = useLocation();
   const movie = location.state;
@@ -61,8 +59,8 @@ function MovieDetailsPage() {
         </div>
       </div>
 
-      <h3>
-        <strong>About the movie</strong>{" "}
+      <h3 style={{marginTop:"20px"}}>
+        <strong>About the Movie</strong>{" "}
       </h3>
       <p>{movie.description}</p>
       <h3>
@@ -81,7 +79,6 @@ function MovieDetailsPage() {
         ))}
       </div>
 
-      {/* Trailer Modal */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -114,7 +111,7 @@ function MovieDetailsPage() {
         <h2>{movie.title} - Trailer</h2>
         <iframe
           width="100%"
-          height="400"
+          height="400vh"
           src={movie.trailerUrl}
           title="Trailer"
           frameBorder="0"

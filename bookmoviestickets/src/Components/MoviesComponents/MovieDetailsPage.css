@@ -3,10 +3,11 @@
   background-color: #f4f4f4;
 }
 
+/* Movie Details Container */
 #movie-details-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -15,8 +16,8 @@
 
 #movie-poster img {
   width: 300px;
-  height: auto;
-  object-fit: cover;
+  height: 428px;
+  object-fit: fill;
 }
 
 #movie-info {
@@ -29,6 +30,7 @@
   margin-bottom: 1rem;
 }
 
+/* Ratings and Additional Info */
 .rating-section {
   display: flex;
   align-items: center;
@@ -46,11 +48,12 @@
   color: #666;
 }
 
-.additional-info span {
+.additional-info p {
   margin: 0.5rem 0;
   font-size: 1rem;
 }
 
+/* Book Tickets Button */
 .book-ticket-button {
   margin-top: 1rem;
   padding: 0.8rem 1.5rem;
@@ -67,7 +70,34 @@
   background-color: #d43f3f;
 }
 
-/* Responsive Styles for 320px to 767px */
+/* Cast Section */
+.cast-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actor {
+  text-align: center;
+}
+
+.actor-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/* Modal Close Button */
+.close-modal-button {
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
 @media (max-width: 767px) {
   #movie-details-page {
     padding: 1rem;
@@ -76,12 +106,7 @@
   #movie-details-container {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-  }
-
-  #movie-poster img {
-    width: 100%; 
-    max-width: 300px;
+    gap: 0rem;
   }
 
   #movie-info {
@@ -102,7 +127,7 @@
   }
 
   .votes {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .additional-info p {
@@ -110,28 +135,13 @@
   }
 
   .book-ticket-button {
-    width: 100%; /* Make button take full width */
+    width: 100%;
     padding: 0.7rem;
     font-size: 1rem;
   }
 
-  .ReactModal__Content {
-    top: 20px;
-    bottom: 20px;
-    left: 10px;
-    right: 5px;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 95%; /* Adjust max-width for small screens */
-    margin: 0 auto;
-  }
-
-  .ReactModal__Overlay {
-    background-color: rgba(0, 0, 0, 0.85); /* Slightly darker overlay for small devices */
-  }
-
   iframe {
-    height: 250px; /* Adjust height for smaller screens */
+    height: 250px;
   }
-
 }
+ 
