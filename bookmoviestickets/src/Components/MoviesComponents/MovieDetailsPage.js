@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import "./MovieDetailsPage.css";
 
 function MovieDetailsPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const movie = location.state;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,6 +16,10 @@ function MovieDetailsPage() {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleBookTickets = () => {
+    navigate("/theatre-details", { state: { movieName: movie.title } });
+  };
 
   return (
     <div id="movie-details-page">
@@ -55,11 +60,13 @@ function MovieDetailsPage() {
               <strong>Age Rating:</strong> {movie.ageRating}
             </p>
           </div>
-          <button className="book-ticket-button">Book Tickets</button>
+          <button className="book-ticket-button" onClick={handleBookTickets}>
+            Book Tickets
+          </button>
         </div>
       </div>
 
-      <h3 style={{marginTop:"20px"}}>
+      <h3 style={{ marginTop: "20px" }}>
         <strong>About the Movie</strong>{" "}
       </h3>
       <p>{movie.description}</p>
