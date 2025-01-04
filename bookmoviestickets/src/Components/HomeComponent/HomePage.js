@@ -6,6 +6,8 @@ import { collection, getDocs, query } from "firebase/firestore"; // Removed 'sel
 import db from "../MoviesData/Firebase.js"; // Import Firestore instance
 import MovieCard from "./MovieCard";
 import "./HomePage.css";
+import VariantsExample from "./Spinner.js";
+
 
 function HomePage() {
   const [movies, setMovies] = useState([]); // State to hold movie data
@@ -124,7 +126,7 @@ function HomePage() {
         <h2>Recommended Movies</h2>
         <div className="movies-grid">
           {loading ? (
-            <p>Loading movies...</p> // Display a loader while data is being fetched
+            <p><VariantsExample/></p> // Display a loader while data is being fetched
           ) : filteredMovies.length > 0 ? (
             filteredMovies.map((movie, index) => (
               <MovieCard
