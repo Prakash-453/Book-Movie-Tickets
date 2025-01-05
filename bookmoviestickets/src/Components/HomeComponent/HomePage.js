@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs, query } from "firebase/firestore"; // Removed 'select' import
+import { collection, getDocs, query } from "firebase/firestore"; 
 import db from "../MoviesData/Firebase.js"; // Import Firestore instance
 import MovieCard from "./MovieCard";
 import "./HomePage.css";
-import VariantsExample from "./Spinner.js";
 
 
 function HomePage() {
@@ -21,7 +20,7 @@ function HomePage() {
     const fetchMovies = async () => {
       try {
         const moviesCollection = collection(db, "movies");
-        const moviesQuery = query(moviesCollection); // No need for 'select' in Firebase v9+
+        const moviesQuery = query(moviesCollection); 
         const moviesSnapshot = await getDocs(moviesQuery);
         const moviesList = moviesSnapshot.docs.map((doc) => doc.data());
         setMovies(moviesList);
@@ -126,7 +125,7 @@ function HomePage() {
         <h2>Recommended Movies</h2>
         <div className="movies-grid">
           {loading ? (
-            <p><VariantsExample/></p> // Display a loader while data is being fetched
+            <p>Loading Movies.......</p> // Display a loader while data is being fetched
           ) : filteredMovies.length > 0 ? (
             filteredMovies.map((movie, index) => (
               <MovieCard
