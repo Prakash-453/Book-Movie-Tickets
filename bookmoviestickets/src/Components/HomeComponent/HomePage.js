@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs, query } from "firebase/firestore"; 
-import db from "../MoviesData/Firebase.js"; // Import Firestore instance
+import { collection, getDocs, query } from "firebase/firestore";
+import db from "../MoviesData/MoviesFirebase.js"; // Import Firestore instance
 import MovieCard from "./MovieCard";
 import "./HomePage.css";
-
 
 function HomePage() {
   const [movies, setMovies] = useState([]); // State to hold movie data
@@ -20,7 +19,7 @@ function HomePage() {
     const fetchMovies = async () => {
       try {
         const moviesCollection = collection(db, "movies");
-        const moviesQuery = query(moviesCollection); 
+        const moviesQuery = query(moviesCollection);
         const moviesSnapshot = await getDocs(moviesQuery);
         const moviesList = moviesSnapshot.docs.map((doc) => doc.data());
         setMovies(moviesList);
@@ -41,7 +40,6 @@ function HomePage() {
   const handleSearchQuery = (e) => {
     setSearchQuery(e.target.value);
   };
-
   const handleMovieClick = (movie) => {
     navigate(`/movie/${movie.title}`, { state: movie });
   };

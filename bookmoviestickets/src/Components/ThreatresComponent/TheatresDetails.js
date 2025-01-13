@@ -1,68 +1,74 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import './ThreatreDetails.css';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import db from "../ThreatresData/TheatresFirebase.js" // Import your Firebase config
+import { collection, getDocs } from "firebase/firestore";
+import "./ThreatreDetails.css"
+
 
 const MovieShowtimes = () => {
-  const movieData = {
-    theatres: [
-      {
-        id: '1',
-        name: 'AAA Cinemas: Ameerpet',
-        showtimes: ['10:45 AM', '03:50 PM', '05:30 PM', '09:30 PM'],
-        language: ['Telugu', 'Hindi'],
-      },
-      {
-        id: '2',
-        name: 'Alankar (Pratap Theatre): Langer House',
-        showtimes: ['02:00 PM', '05:45 PM', '09:30 PM'],
-        language: ['Telugu', 'Tamil'],
-      },
-      {
-        id: '3',
-        name: 'AMB Cinemas: Gachibowli',
-        showtimes: ['12:55 PM', '03:50 PM'],
-        language: ['Hindi', 'Malayalam'],
-      },
-      {
-        id: '4',
-        name: 'Aparna Cinemas: Nallagandla',
-        showtimes: ['02:30 PM', '06:30 PM', '07:25 PM', '10:30 PM', '11:15 PM'],
-        language: ['Telugu', 'Malayalam'],
-      },
-    ],
-  };
-
-  const [selectedLanguage, setSelectedLanguage] = useState('Telugu');
-  const [date, setDate] = useState(new Date());
+  const [theatresData, setTheatresData] = useState([]); // State for theater data
+  const [selectedLanguage, setSelectedLanguage] = useState("Telugu"); // State for language filter
+  const [date, setDate] = useState(new Date()); // State for selected date
   const location = useLocation();
-  const { movieName } = location.state || { movieName: 'Unknown Movie' };
+  const { movieName } = location.state || { movieName: "Select Movie" };
 
+  // Fetch theater data from Firestore
+  useEffect(() => {
+    const fetchTheatres = async () => {
+      try {
+        const theatresCollection = collection(db, "theatres"); // Replace "theatres" with your Firestore collection name
+        const theatresSnapshot = await getDocs(theatresCollection);
+        const theatresList = theatresSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTheatresData(theatresList);
+      } catch (error) {
+        console.error("Error fetching theaters: ", error);
+      }
+    };
+
+    fetchTheatres();
+  }, []);
+
+  // Handle language selection
   const handleLanguageChange = (language) => setSelectedLanguage(language);
 
+  // Navigate between dates
   const handleDateChange = (direction) => {
     const newDate = new Date(date);
-    direction === 'prev' ? newDate.setDate(newDate.getDate() - 1) : newDate.setDate(newDate.getDate() + 1);
+    direction === "prev"
+      ? newDate.setDate(newDate.getDate() - 1)
+      : newDate.setDate(newDate.getDate() + 1);
     setDate(newDate);
   };
 
-  const filteredTheatres = movieData.theatres.filter((theatre) =>
-    theatre.language.includes(selectedLanguage)
+  // Filter theaters based on selected language
+  const filteredTheatres = theatresData.filter((theatre) =>
+    theatre.language?.includes(selectedLanguage)
   );
 
-  const getShowtimeClass = (index) => (index % 2 === 0 ? 'available' : 'fast-filling');
+  // Determine class for showtime based on index (e.g., available or fast-filling)
+  const getShowtimeClass = (index) =>
+    index % 2 === 0 ? "available" : "fast-filling";
 
   return (
     <div className="container">
       <h1>{movieName} - Showtimes</h1>
 
+      {/* Date Navigation */}
       <div className="date-navigation">
-        <button onClick={() => handleDateChange('prev')}>Previous</button>
-        <button onClick={() => handleDateChange('next')}>Next</button>
-        <p>Selected Date: {date.toDateString()}</p>
+        <button onClick={() => handleDateChange("prev")}>Previous</button>
+        <button onClick={() => handleDateChange("next")}>Next</button>
       </div>
+      <p>Selected Date: {date.toDateString()}</p>
 
+      {/* Language Selection */}
       <div className="language-selection">
-        <select value={selectedLanguage} onChange={(e) => handleLanguageChange(e.target.value)}>
+        <select
+          value={selectedLanguage}
+          onChange={(e) => handleLanguageChange(e.target.value)}
+        >
           <option value="Telugu">Telugu</option>
           <option value="Hindi">Hindi</option>
           <option value="Tamil">Tamil</option>
@@ -75,19 +81,27 @@ const MovieShowtimes = () => {
         </div>
       </div>
 
+      {/* Theater Cards */}
       <div className="showtimes-container">
-        {filteredTheatres.map((theatre) => (
-          <div key={theatre.id} className="theatre-card">
-            <h3 className="theatre-name">{theatre.name}</h3>
-            <div className="showtimes">
-              {theatre.showtimes.map((time, index) => (
-                <span key={index} className={`showtime ${getShowtimeClass(index)}`}>
-                  {time}
-                </span>
-              ))}
+        {filteredTheatres.length > 0 ? (
+          filteredTheatres.map((theatre) => (
+            <div key={theatre.id} className="theatre-card">
+              <h3 className="theatre-name">{theatre.name}</h3>
+              <div className="showtimes">
+                {theatre.showtimes.map((time, index) => (
+                  <span
+                    key={index}
+                    className={`showtime ${getShowtimeClass(index)}`}
+                  >
+                    {time}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No theatres available for the selected language.</p>
+        )}
       </div>
     </div>
   );
