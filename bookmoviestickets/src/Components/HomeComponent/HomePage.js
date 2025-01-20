@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Carousel from "react-bootstrap/Carousel";
+import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, query } from "firebase/firestore";
 import db from "../MoviesData/MoviesFirebase.js"; // Import Firestore instance
@@ -123,7 +124,9 @@ function HomePage() {
         <h2>Recommended Movies</h2>
         <div className="movies-grid">
           {loading ? (
-            <p>Loading Movies.......</p> // Display a loader while data is being fetched
+            <center>
+            <Spinner animation="border" variant="danger" />
+          </center>// Display a loader while data is being fetched
           ) : filteredMovies.length > 0 ? (
             filteredMovies.map((movie, index) => (
               <MovieCard
@@ -141,6 +144,75 @@ function HomePage() {
           )}
         </div>
       </section>
+
+      <footer className="footer">
+        <div className="footer-container">
+          <h3>Contact Us</h3>
+          <p>
+            Email:{" "}
+            <a href="mailto:support@bookmovietickets.com">
+              support@bookmovietickets.com
+            </a>
+          </p>
+          <div className="social-links">
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                alt="Facebook"
+              />
+            </a>
+
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                alt="Instagram"
+              />
+            </a>
+
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png"
+                alt="YouTube"
+              />
+            </a>
+
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg"
+                alt="LinkedIn"
+              />
+            </a>
+
+            <a
+              href="https://www.pinterest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png"
+                alt="Pinterest"
+              />
+            </a>
+          </div>
+        </div>
+      </footer>
+      
     </div>
   );
 }

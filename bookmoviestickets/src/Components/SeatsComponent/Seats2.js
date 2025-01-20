@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./Seats.css"; // Add styles here
 
 const Seats2 = () => {
-  const rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
-  const cols = 28;
-  const ticketPrice = 200; // Price per seat
+  const location = useLocation();
+  const { movieName, theatreName, date, showtime } = location.state || {};
 
+  const rows = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",];
+  
+  const cols = 28;
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
 
@@ -28,17 +31,18 @@ const Seats2 = () => {
     const seat = `${row}${col}`;
     if (bookedSeats.includes(seat)) return; // Ignore booked seats
     setSelectedSeats((prev) =>
-      prev.includes(seat)
-        ? prev.filter((s) => s !== seat)
-        : [...prev, seat]
+      prev.includes(seat) ? prev.filter((s) => s !== seat) : [...prev, seat]
     );
   };
 
-  const totalPrice = selectedSeats.length * ticketPrice;
-
   return (
     <div className="theatre-container">
-
+      <div className="movie-details-header">
+        <h2 className="movie-title">{movieName}</h2>
+        <p className="theatre-info">
+          {theatreName} | {date}, {showtime}
+        </p>
+      </div>
       {/* Seats with Row Labels */}
       <div className="theatre">
         {rows.map((row) => (
@@ -53,7 +57,9 @@ const Seats2 = () => {
               return (
                 <div
                   key={seat}
-                  className={`seat ${isBooked ? "booked" : isSelected ? "selected" : "available"}`}
+                  className={`seat ${
+                    isBooked ? "booked" : isSelected ? "selected" : "available"
+                  }`}
                   onClick={() => toggleSeat(row, col)}
                 >
                   {col}
@@ -64,28 +70,10 @@ const Seats2 = () => {
         ))}
       </div>
 
-      {/* Screen */}
-      <div className="screen">All eyes this way please!</div>
-
-      {/* Total Price */}
-      <div className="total-price">
-        <p>
-          Selected Seats: {selectedSeats.join(", ") || "None"}
-        </p>
-        <p>Total Price: ₹{totalPrice}</p>
-      </div>
-
-      {/* Legend */}
-      <div className="legend">
-        <div className="legend-item">
-          <span className="seat available"></span> Available
-        </div>
-        <div className="legend-item">
-          <span className="seat selected"></span> Selected
-        </div>
-        <div className="legend-item">
-          <span className="seat booked"></span> Booked
-        </div>
+      <div className="seat-legend">
+        <span className="available"></span> Available
+        <span className="selected"></span> Selected
+        <span className="sold"></span> Sold
       </div>
     </div>
   );

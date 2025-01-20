@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import "./Seats.css"; // Ensure this file contains the necessary styles
+import { useLocation } from "react-router-dom"; // Import useLocation
+import "./Seats.css";
 
-const Seats = () => {
-  const rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
-  const ticketPrice = 200; // Price per seat
+const Seats1 = () => {
+  const location = useLocation();
+  const { movieName, theatreName, date, showtime } = location.state || {};
+
+  const rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"];
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   const toggleSeat = (row, col) => {
@@ -13,30 +16,33 @@ const Seats = () => {
     );
   };
 
-  const totalPrice = selectedSeats.length * ticketPrice;
-
   return (
     <div className="theatre-container">
-      {/* Seat Map */}
+      <div className="movie-details-header">
+        <h2 className="movie-title">{movieName}</h2>
+        <p className="theatre-info">
+          {theatreName} | {date}, {showtime}
+        </p>
+      </div>
       <div className="theatre">
+        {/* Seat Map */}
         {rows.map((row) => {
-          const numSeats = row === "A" || row === "H" ? 30 : 28; // A and H have 30 seats, others have 28
+          const numSeats = row === "A" || row === "H" ? 30 : 28;
           return (
             <div key={row} className="row">
-              {/* Row Label */}
               <div className="row-label">{row}</div>
-              {/* Render Seats */}
               {Array.from({ length: numSeats }, (_, i) => i + 1).map((col) => {
                 const seat = `${row}${col}`;
                 const isSelected = selectedSeats.includes(seat);
 
-                // Add a gap between seats 14 and 15 for applicable rows
                 if (col === 15 && row !== "A" && row !== "H") {
                   return (
                     <React.Fragment key={col}>
                       <div className="gap"></div>
                       <div
-                        className={`seat ${isSelected ? "selected" : "available"}`}
+                        className={`seat ${
+                          isSelected ? "selected" : "available"
+                        }`}
                         onClick={() => toggleSeat(row, col)}
                       >
                         {col}
@@ -60,32 +66,14 @@ const Seats = () => {
         })}
       </div>
 
-      {/* Screen Section */}
-      <div className="screen">All eyes this way please!</div>
-
-      {/* Selected Seats and Total Price */}
-      <div className="total-price">
-        <p>Selected Seats: {selectedSeats.join(", ") || "None"}</p>
-        <p>Total Price: ₹{totalPrice}</p>
-      </div>
-
       {/* Legend Section */}
-      <div className="legend">
-        <div className="legend-item">
-          <div className="seat available"></div>
-          <span>Available</span>
-        </div>
-        <div className="legend-item">
-          <div className="seat selected"></div>
-          <span>Selected</span>
-        </div>
-        <div className="legend-item">
-          <div className="seat booked"></div>
-          <span>Sold</span>
-        </div>
+      <div className="seat-legend">
+        <span className="available"></span> Available
+        <span className="selected"></span> Selected
+        <span className="sold"></span> Sold
       </div>
     </div>
   );
 };
 
-export default Seats;
+export default Seats1;
