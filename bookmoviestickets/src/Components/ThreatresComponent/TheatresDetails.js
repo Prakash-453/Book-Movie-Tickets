@@ -23,7 +23,7 @@ const MovieShowtimes = () => {
   useEffect(() => {
     const fetchTheatres = async () => {
       try {
-        const theatresCollection = collection(db, "theatres");
+        const theatresCollection = collection(db, "Theatres");
         const theatresSnapshot = await getDocs(theatresCollection);
         const theatresList = theatresSnapshot.docs.map((doc) => ({
           id: doc.id,

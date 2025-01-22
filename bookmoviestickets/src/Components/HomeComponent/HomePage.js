@@ -1,50 +1,47 @@
 import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Carousel from "react-bootstrap/Carousel";
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs, query } from "firebase/firestore";
-import db from "../MoviesData/MoviesFirebase.js"; // Import Firestore instance
+import { collection, getDocs } from "firebase/firestore";
+import db from "../MoviesData/MoviesFirebase.js"; // Firestore instance
 import MovieCard from "./MovieCard";
 import "./HomePage.css";
 
 function HomePage() {
   const [movies, setMovies] = useState([]); // State to hold movie data
   const [loading, setLoading] = useState(true); // Loading indicator
-  const [searchQuery, setSearchQuery] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const [menuOpen, setMenuOpen] = useState(false); // State for Offcanvas menu
   const navigate = useNavigate();
 
-  // Fetch movies from Firestore
+  // Fetch movies from Firestore on component mount
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const moviesCollection = collection(db, "movies");
-        const moviesQuery = query(moviesCollection);
-        const moviesSnapshot = await getDocs(moviesQuery);
+        const moviesCollection = collection(db, "Movies");
+        const moviesSnapshot = await getDocs(moviesCollection);
         const moviesList = moviesSnapshot.docs.map((doc) => doc.data());
+        console.log("Fetched movies:", moviesList);
         setMovies(moviesList);
       } catch (error) {
-        console.error("Error fetching movies: ", error);
+        console.error("Error fetching movies:", error);
       } finally {
-        setLoading(false); // Stop loading spinner
+        setLoading(false);
       }
     };
 
     fetchMovies();
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen); // Toggle Offcanvas menu
 
-  const handleSearchQuery = (e) => {
-    setSearchQuery(e.target.value);
-  };
-  const handleMovieClick = (movie) => {
-    navigate(`/movie/${movie.title}`, { state: movie });
-  };
+  const handleSearchQuery = (e) => setSearchQuery(e.target.value); // Update search input state
 
+  const handleMovieClick = (movie) =>
+    navigate(`/movie/${movie.title}`, { state: movie }); // Navigate to movie details
+
+  // Filter movies based on the search query
   const filteredMovies = movies.filter(
     (movie) =>
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -76,48 +73,42 @@ function HomePage() {
           <div className="bar"></div>
         </div>
 
-        {/* Offcanvas Dropdown Menu */}
         <Offcanvas show={menuOpen} onHide={toggleMenu} placement="end">
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Hey User!</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <nav>
-              <div>
-                <div className="menu-item">Home</div>
-                <div className="menu-item">Movies</div>
-                <div className="menu-item">Events</div>
-                <div className="menu-item">Plays</div>
-                <div className="menu-item">Sports</div>
-                <div className="menu-item">Activities</div>
-              </div>
+              <div className="menu-item">Home</div>
+              <div className="menu-item">Movies</div>
+              <div className="menu-item">Events</div>
+              <div className="menu-item">Plays</div>
+              <div className="menu-item">Sports</div>
+              <div className="menu-item">Activities</div>
             </nav>
           </Offcanvas.Body>
         </Offcanvas>
       </header>
 
       <Carousel className="banner">
-        <Carousel.Item>
-          <img
-            className="banimg"
-            src="https://assets-in.bmscdn.com/promotions/cms/creatives/1726036566435_playcardnewweb.jpg"
-            alt="Credit Card"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="banimg"
-            src="https://assets-in.bmscdn.com/promotions/cms/creatives/1732797085304_asiancinemawebbanner.jpg"
-            alt="Asian Cinema"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="banimg"
-            src="https://assets-in.bmscdn.com/promotions/cms/creatives/1733491218245_prasadsmultiplexweb.jpg"
-            alt="Prasads Multiplex"
-          />
-        </Carousel.Item>
+        {[
+          {
+            src: "https://assets-in.bmscdn.com/promotions/cms/creatives/1726036566435_playcardnewweb.jpg",
+            alt: "Credit Card",
+          },
+          {
+            src: "https://assets-in.bmscdn.com/promotions/cms/creatives/1732797085304_asiancinemawebbanner.jpg",
+            alt: "Asian Cinema",
+          },
+          {
+            src: "https://assets-in.bmscdn.com/promotions/cms/creatives/1733491218245_prasadsmultiplexweb.jpg",
+            alt: "Prasads Multiplex",
+          },
+        ].map((slide, index) => (
+          <Carousel.Item key={index}>
+            <img className="banimg" src={slide.src} alt={slide.alt} />
+          </Carousel.Item>
+        ))}
       </Carousel>
 
       <section className="movies-section">
@@ -125,8 +116,8 @@ function HomePage() {
         <div className="movies-grid">
           {loading ? (
             <center>
-            <Spinner animation="border" variant="danger" />
-          </center>// Display a loader while data is being fetched
+              <Spinner animation="border" variant="danger" />
+            </center>
           ) : filteredMovies.length > 0 ? (
             filteredMovies.map((movie, index) => (
               <MovieCard
@@ -155,64 +146,45 @@ function HomePage() {
             </a>
           </p>
           <div className="social-links">
-            <a
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-                alt="Facebook"
-              />
-            </a>
-
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                alt="Instagram"
-              />
-            </a>
-
-            <a
-              href="https://www.youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png"
-                alt="YouTube"
-              />
-            </a>
-
-            <a
-              href="https://www.linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg"
-                alt="LinkedIn"
-              />
-            </a>
-
-            <a
-              href="https://www.pinterest.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png"
-                alt="Pinterest"
-              />
-            </a>
+            {[
+              {
+                href: "https://www.facebook.com",
+                src: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+                alt: "Facebook",
+              },
+              {
+                href: "https://www.instagram.com",
+                src: "https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png",
+                alt: "Instagram",
+              },
+              {
+                href: "https://www.youtube.com",
+                src: "https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png",
+                alt: "YouTube",
+              },
+              {
+                href: "https://www.linkedin.com",
+                src: "https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg",
+                alt: "LinkedIn",
+              },
+              {
+                href: "https://www.pinterest.com",
+                src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png",
+                alt: "Pinterest",
+              },
+            ].map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={link.src} alt={link.alt} />
+              </a>
+            ))}
           </div>
         </div>
       </footer>
-      
     </div>
   );
 }

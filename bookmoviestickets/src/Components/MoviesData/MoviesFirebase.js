@@ -1,15 +1,14 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getFirestore} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBfvSwVSi0D_ngaiEXi4YkvHxlS2GP_ZI4",
-  authDomain: "moviesdata-c2647.firebaseapp.com",
-  projectId: "moviesdata-c2647",
-  storageBucket: "moviesdata-c2647.firebasestorage.app",
-  messagingSenderId: "1088282913696",
-  appId: "1:1088282913696:web:238527e3001896663112c5",
-  measurementId: "G-E3LKXYF49T"
+  apiKey: "AIzaSyAH57qenf0nkcV4zpHiM0-wnfyGdoCerYg",
+  authDomain: "movies-data-ca8bb.firebaseapp.com",
+  projectId: "movies-data-ca8bb",
+  storageBucket: "movies-data-ca8bb.firebasestorage.app",
+  messagingSenderId: "824550398156",
+  appId: "1:824550398156:web:73e7a57c26f78604888a69",
+  measurementId: "G-9FW3FSGT8Q"
 };
 
 // Initialize Firebase

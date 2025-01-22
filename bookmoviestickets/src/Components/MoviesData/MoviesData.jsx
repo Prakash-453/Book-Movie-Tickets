@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import db from "./MoviesFirebase.js";
+import db from "./MoviesFirebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
 let hasStoredMovies = false; // Persistent flag to prevent re-execution
 
 export default function StoreMovies() {
   const [isLoading, setIsLoading] = useState(false);
-
+  
   // Movie data to store in Firestore
   const movies = [
     {
@@ -99,7 +99,6 @@ export default function StoreMovies() {
         },
       ],
     },
-
     {
       title: "Lucky Baskhar",
       rating: "9.3/10",
@@ -531,28 +530,24 @@ export default function StoreMovies() {
   const storeMoviesInFirebase = async () => {
     setIsLoading(true);
     try {
-      const collectionRef = collection(db, "movies"); // Reference to the "movies" collection
-
+      const collectionRef = collection(db, "Movies");
       for (const movie of movies) {
-        // Query to check if the movie already exists
         const q = query(collectionRef, where("title", "==", movie.title));
         const querySnapshot = await getDocs(q);
-
+  
         if (querySnapshot.empty) {
-          // Add movie to Firestore if not already present
-          const docRef = await addDoc(collectionRef, { ...movie });
-          console.log("Document written with ID: ", docRef.id);
+          await addDoc(collectionRef, { ...movie });
+          console.log(`Movie added: ${movie.title}`);
         } else {
-          console.log(`Skipping duplicate movie: ${movie.title}`);
+          console.log(`Skipping duplicate: ${movie.title}`);
         }
       }
-
       alert("Movies successfully stored in Firebase!");
     } catch (error) {
-      console.error("Error adding movies to Firebase:", error);
-      alert("Failed to store movies. Check the console for details.");
+      console.error("Error storing movies:", error);
+      alert("Failed to store movies. Check console for details.");
     } finally {
-      setIsLoading(false); // Stop the loading indicator
+      setIsLoading(false);
     }
   };
 
@@ -564,6 +559,7 @@ export default function StoreMovies() {
     }
   }, []); // Empty dependency array ensures this runs only once
 
+  
   return (
     <div>
       <h1>Storing Movies in Firebase</h1>

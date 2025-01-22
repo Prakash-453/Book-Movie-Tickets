@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import db from "./TheatresFirebase.js"
+import db from "./TheatresFirebase.js";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+
 
 let hasStoredTheatres=false;
 
@@ -37,7 +38,7 @@ export default function Theatres() {
   const storeTheatresInFirebase = async () => {
     setIsLoading(true);
     try {
-      const collectionRef = collection(db, "theatres");
+      const collectionRef = collection(db, "Theatres");
 
       for (const theatre of TheatresData) {
         const q = query(collectionRef, where("name", "==", theatre.name));
@@ -47,7 +48,7 @@ export default function Theatres() {
           const docRef = await addDoc(collectionRef, { ...theatre });
           console.log("Document written with ID:", docRef.id);
         } else {
-          console.log( `Skipping duplicate theatre: ${theatre.name}`);
+          console.log(`Skipping duplicate theatre: ${theatre.name}`);
         }
       }
 
