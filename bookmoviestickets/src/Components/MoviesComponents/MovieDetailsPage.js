@@ -67,7 +67,7 @@ function MovieDetailsPage() {
       </div>
 
       <h3 style={{ marginTop: "20px" }}>
-        <strong>About the Movie</strong>{" "}
+        <strong>About the Movie</strong>
       </h3>
       <p>{movie.description}</p>
       <h3>
