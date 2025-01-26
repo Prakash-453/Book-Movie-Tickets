@@ -45,7 +45,9 @@
   color: cornsilk;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  margin-top: 10px;
 }
+
 .movie-details-header {
   padding: 10px;
   background-color: white; /* Ensures background remains visible */
@@ -76,7 +78,7 @@
 .row {
   display: grid;
   grid-template-columns: 44px repeat(30, 1fr); /* First column for row labels */
-  gap: 6px;
+  gap: 5px;
   align-items: center;
 }
 
@@ -179,3 +181,4 @@
 .pay-button:hover {
   background-color: #d22;
 }
+
