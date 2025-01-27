@@ -254,7 +254,6 @@ function HomePage() {
           <div className="menu-item" onClick={() => scrollToSection(eventsRef)}>📢Events</div>
           <div className="menu-item" onClick={() => scrollToSection(playsRef)}>🎵Plays</div>
           <div className="menu-item" onClick={() => scrollToSection(sportsRef)}>🏀Sports</div>
-          <div className="menu-item" onClick={() => scrollToSection(activitiesRef)}>Activities</div>
         </div>
       </nav>
     </Offcanvas.Body>
