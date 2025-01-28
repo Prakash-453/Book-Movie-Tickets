@@ -35,6 +35,7 @@
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: #333;
+  margin-top: -10px;
 }
 
 .movie-details p {
@@ -64,21 +65,23 @@
 .download-button,
 .home-button {
   flex: 1;
+  max-width: 150px; /* Prevent resizing on hover */
   padding: 10px;
   border: none;
   border-radius: 5px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
 }
 
 .download-button {
-  background-color:red;
+  background-color: red;
   color: #fff;
 }
 
 .download-button:hover {
   background-color: gray;
+  color: #fff;
 }
 
 .home-button {
@@ -87,5 +90,6 @@
 }
 
 .home-button:hover {
-  background-color:grey;
+  background-color: grey;
+  color: #fff;
 }

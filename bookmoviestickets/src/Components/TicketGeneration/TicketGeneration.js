@@ -2,12 +2,13 @@ import React, { useRef } from "react";
 import QRCode from "react-qr-code";
 import { useLocation, useNavigate } from "react-router-dom";
 import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 import "./TicketGeneration.css";
 
 const TicketPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const qrRef = useRef(); // Reference for QR Code
+  const ticketRef = useRef();
 
   const {
     selectedSeats,
@@ -15,13 +16,12 @@ const TicketPage = () => {
     theatreName,
     date,
     showtime,
-    totalPrice,
     convenienceFee,
     gst,
     grandTotal,
   } = location.state || {};
 
-  if (!selectedSeats) {
+  if (!selectedSeats.length) {
     navigate("/");
     return null;
   }
@@ -35,51 +35,47 @@ const TicketPage = () => {
     grandTotal,
   });
 
-  const handleDownload = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(20);
-    doc.text("Your Movie Ticket", 10, 20);
-
-    doc.setFontSize(12);
-    doc.text(`Movie: ${movieName}`, 10, 40);
-    doc.text(`Theatre: ${theatreName}`, 10, 50);
-    doc.text(`Date & Time: ${date}, ${showtime}`, 10, 60);
-    doc.text(`Selected Seats: ${selectedSeats.join(", ")}`, 10, 70);
-    doc.text(`Total Paid: ₹${grandTotal.toFixed(2)}`, 10, 80);
-
-    const qrCanvas = qrRef.current?.querySelector("canvas");
-    if (qrCanvas) {
-      const qrDataUrl = qrCanvas.toDataURL("image/png");
-      doc.addImage(qrDataUrl, "PNG", 150, 20, 40, 40);
-    }
-
+  const handleDownload = async () => {
+    const canvas = await html2canvas(ticketRef.current, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+    const doc = new jsPDF("p", "mm", "a4");
+    doc.addImage(imgData, "PNG", 10, 10, 190, 230);
     doc.save("Movie_Ticket.pdf");
   };
 
   return (
     <div className="ticket-page">
-      <div className="ticket-container">
+      <div className="ticket-container" ref={ticketRef}>
         <h2 className="ticket-header">🎫 Your Movie Ticket</h2>
 
         <div className="ticket-info">
           <div className="movie-details">
             <h3>{movieName}</h3>
-            <p><strong>Theatre:</strong> {theatreName}</p>
-            <p><strong>Date & Time:</strong> {date}, {showtime}</p>
-            <p><strong>Seats:</strong> {selectedSeats.join(", ")}</p>
-            <p><strong>Convenience Fee:</strong> ₹{convenienceFee.toFixed(2)}</p>
-            <p><strong>GST:</strong> ₹{gst.toFixed(2)}</p>
-            <p><strong>Total Paid:</strong> ₹{grandTotal.toFixed(2)}</p>
+            <p>
+              <strong>Theatre:</strong> {theatreName}
+            </p>
+            <p>
+              <strong>Date & Time:</strong> {date}, {showtime}
+            </p>
+            <p>
+              <strong>Seats:</strong> {selectedSeats.join(", ")}
+            </p>
+            <p>
+              <strong>Convenience Fee:</strong> ₹{convenienceFee.toFixed(2)}
+            </p>
+            <p>
+              <strong>GST:</strong> ₹{gst.toFixed(2)}
+            </p>
+            <p>
+              <strong>Total Paid:</strong> ₹{grandTotal.toFixed(2)}
+            </p>
           </div>
 
           <div className="qr-section">
             <h4>Scan this QR Code at the Theatre</h4>
-            <div ref={qrRef}>
-              <QRCode value={qrData} size={120} />
-            </div>
+            <QRCode value={qrData} size={120} />
           </div>
         </div>
-
         <div className="action-buttons">
           <button className="download-button" onClick={handleDownload}>
             Download Ticket
