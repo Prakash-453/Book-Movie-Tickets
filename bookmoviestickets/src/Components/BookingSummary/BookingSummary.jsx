@@ -61,7 +61,7 @@ const BookingSummary = () => {
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    navigate("/ticket", {
+    navigate("/TicketPage", {
       state: {
         selectedSeats,
         movieName,
