@@ -44,7 +44,7 @@ const TicketPage = () => {
     const imgData = canvas.toDataURL("image/png");
     buttons.style.display = "flex";
     const doc = new jsPDF("p", "mm", "a4");
-    doc.addImage(imgData, "PNG", 10, 10, 190, 230);
+    doc.addImage(imgData, "PNG", 40, 20, 140, 170);
     doc.save("Movie_Ticket.pdf");
   };
   
