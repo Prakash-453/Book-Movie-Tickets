@@ -36,47 +36,40 @@ const TicketPage = () => {
   });
 
   const handleDownload = async () => {
+    const buttons = document.querySelector(".action-buttons");
+    buttons.style.display = "none";
+  
+    // Capture the ticket as an image
     const canvas = await html2canvas(ticketRef.current, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
+    buttons.style.display = "flex";
     const doc = new jsPDF("p", "mm", "a4");
     doc.addImage(imgData, "PNG", 10, 10, 190, 230);
     doc.save("Movie_Ticket.pdf");
   };
-
+  
   return (
     <div className="ticket-page">
       <div className="ticket-container" ref={ticketRef}>
         <h2 className="ticket-header">🎫 Your Movie Ticket</h2>
-
+  
         <div className="ticket-info">
           <div className="movie-details">
             <h3>{movieName}</h3>
-            <p>
-              <strong>Theatre:</strong> {theatreName}
-            </p>
-            <p>
-              <strong>Date & Time:</strong> {date}, {showtime}
-            </p>
-            <p>
-              <strong>Seats:</strong> {selectedSeats.join(", ")}
-            </p>
-            <p>
-              <strong>Convenience Fee:</strong> ₹{convenienceFee.toFixed(2)}
-            </p>
-            <p>
-              <strong>GST:</strong> ₹{gst.toFixed(2)}
-            </p>
-            <p>
-              <strong>Total Paid:</strong> ₹{grandTotal.toFixed(2)}
-            </p>
+            <p><strong>Theatre:</strong> {theatreName}</p>
+            <p><strong>Date & Time:</strong> {date}, {showtime}</p>
+            <p><strong>Seats:</strong> {selectedSeats.join(", ")}</p>
+            <p><strong>Convenience Fee:</strong> ₹{convenienceFee.toFixed(2)}</p>
+            <p><strong>GST:</strong> ₹{gst.toFixed(2)}</p>
+            <p><strong>Total Paid:</strong> ₹{grandTotal.toFixed(2)}</p>
           </div>
-
+  
           <div className="qr-section">
             <h4>Scan this QR Code at the Theatre</h4>
             <QRCode value={qrData} size={120} />
           </div>
         </div>
-        <div className="action-buttons">
+        <div className="action-buttons no-print">
           <button className="download-button" onClick={handleDownload}>
             Download Ticket
           </button>
@@ -87,6 +80,7 @@ const TicketPage = () => {
       </div>
     </div>
   );
+  
 };
 
 export default TicketPage;
