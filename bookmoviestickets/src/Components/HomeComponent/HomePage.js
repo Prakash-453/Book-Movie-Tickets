@@ -34,11 +34,12 @@ function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
-  const filteredMovies = movies.filter(
+  const filteredMovies = movies?.filter(
     (movie) =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      (movie.title?.toLowerCase().includes(searchQuery?.toLowerCase())) ||
+      (movie.genre?.toLowerCase().includes(searchQuery?.toLowerCase()))
+  ) || [];
+  
 
   const handleSearchQuery = (e) => {
     setSearchQuery(e.target.value);
@@ -196,8 +197,8 @@ function HomePage() {
 
   return (
     <div className="App">
-      <header className="header">
-        <div className="logo">BookMovieTickets</div>
+      <header className="Header">
+        <div className="logo">MovieVista</div>
         <input
           type="text"
           placeholder="Search for Movies, theaters..etc"
@@ -321,7 +322,7 @@ function HomePage() {
         </div>
       </section>
       <div className="containerr" ref={eventsRef}>
-      <div className="headerr">
+      <div className="Events">
         <h2>Popular Events</h2>
         <button className="see-all">See All</button>
       </div>
@@ -399,7 +400,7 @@ function HomePage() {
           <div class="divider">
             <hr />
             <h2>
-              Book<span>Movie</span>Tickets
+              Movie<span style={{color:"#09B5E0"}}>Vista</span>
             </h2>
             <hr />
           </div>

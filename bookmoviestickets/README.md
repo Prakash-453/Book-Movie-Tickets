@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+Online Movie Ticket Booking System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview
+The Online Movie Ticket Booking System provides users with a seamless and convenient way to book movie tickets online. It ensures a smooth experience with features like movie search, seat selection, secure payment, and booking confirmation.
 
-## Available Scripts
+Project Purpose
+The primary objectives of this system are:
+✔️ Allow users to search for movies, view show timings, and check seat availability.
+✔️ Enable users to select seats and book tickets online hassle-free.
+✔️ Integrate secure online payment for ticket booking.
+✔️ Generate booking confirmations and digital tickets.
+✔️ Provide a responsive user interface across multiple devices.
 
-In the project directory, you can run:
+Technologies Used
+Frontend (Client-Side)
+React.js – For building a dynamic and interactive UI.
+JavaScript – Handles event-driven operations and user interactions.
+HTML & CSS – Ensures a structured and visually appealing design.
+React Router – Manages navigation between pages (e.g., Home, Movie List, Booking Page).
+Bootstrap/CSS – Enhances responsiveness and styling.
 
-### `npm start`
+Backend & Database
+Firebase (Firestore Database) – Stores real-time movie data, user bookings, and seat availability.
+Provides cloud-based hosting for static assets.
+Manages authentication (if login/signup is implemented).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Payment Gateway – Razorpay Integration
+Ensures secure online transactions for ticket bookings.
+Supports various payment methods (credit/debit cards, UPI, wallets).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Key Features & Functionalities
 
-### `npm test`
+✅ Movie Search & Selection
+Users can browse available movies and filter them based on:
+Genre (Action, Comedy, Drama, etc.).
+Language (English, Hindi, etc.).
+City/Theater.
+Show Timing.
+Clicking on a movie redirects the user to a detailed page displaying:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Movie description, trailer, and ratings.
+Available theaters and their respective show timings.
+✅ Seat Selection & Booking Process
+View an interactive seat layout.
+Select the desired number of seats.
+Pricing updates dynamically based on seat selection.
+Real-time seat availability updates to prevent duplicate bookings.
 
-### `npm run build`
+✅ Payment Processing with Razorpay
+Users proceed to a secure checkout after seat selection.
+Razorpay processes transactions securely.
+Upon successful payment, booking details are stored in Firebase.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅ Booking Confirmation & Ticket Generation
+Users receive an email/SMS confirmation.
+A digital ticket (QR Code or PDF) is generated.
+The system updates seat availability in real time to prevent overbooking.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✅ Responsive UI & User-Friendly Design
+Optimized for mobile and desktop users.
+Intuitive navigation ensures a smooth experience.
+Users can track booking history (if login is implemented).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+User Journey (Step-by-Step Guide)
+1️⃣ Search & Select Movie
+Users land on the homepage and search or browse available movies.
+Select a movie and preferred showtime.
 
-### `npm run eject`
+2️⃣ Choose Seats
+View a real-time seat map.
+Select seats and review pricing.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3️⃣ Make Payment
+Redirected to Razorpay's secure payment gateway.
+Enter payment details and complete the transaction.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4️⃣ Get Booking Confirmation
+A digital ticket (QR Code or PDF) is generated.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5️⃣ Enjoy the Movie!
+Show the digital ticket at the theater for entry.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Future Enhancements
+✅ User Authentication - Allow users to log in and track bookings.
+✅ Reviews & Ratings - Enable users to rate movies and theaters.
+✅ Promo Codes & Discounts - Implement discount features for users.
+✅ Multiple Payment Gateways - Support PayPal, Stripe, or other options.
 
-## Learn More
+Project Setup & Installation 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone the Repository
+git clone https://github.com/Prakash-453/Book-Movie-Tickets.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Navigate to the Project Directory
+cd BookmovieTickets
 
-### Code Splitting
+Install Dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Configuration
+Create a .env file in the root directory and add the following configurations:
+REACT_APP_GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'
+REACT_APP_RAZORPAY_KEY = 'YOUR_RAZORPAY_API_KEY'
+Replace <YOUR_GOOGLE_CLIENT_ID> and <YOUR_RAZORPAY_API_KEY> with your actual API keys.
 
-### Analyzing the Bundle Size
+Start the Development Server
+npm start
+This will start the application locally at: 🔗 http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Conclusion
+The Online Movie Ticket Booking System offers a modern, secure, and user-friendly way to book movie tickets online. With React.js, Firebase, and Razorpay, it ensures a fast, reliable, and real-time booking experience. The responsive UI enhances the overall movie-going experience.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project Preview
+![alt text](<Project Execution Video.gif>)

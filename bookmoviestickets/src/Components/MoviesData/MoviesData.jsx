@@ -6,7 +6,6 @@ let hasStoredMovies = false; // Persistent flag to prevent re-execution
 
 export default function StoreMovies() {
   const [isLoading, setIsLoading] = useState(false);
-  
   // Movie data to store in Firestore
   const movies = [
     {
@@ -46,6 +45,7 @@ export default function StoreMovies() {
         },
       ],
     },
+
     {
       title: "Pushpa 2: The Rule",
       rating: "8.4/10",
@@ -75,6 +75,7 @@ export default function StoreMovies() {
         },
       ],
     },
+
     {
       title: "Bachhala Malli",
       rating: "8.2/10",
@@ -99,6 +100,7 @@ export default function StoreMovies() {
         },
       ],
     },
+
     {
       title: "Lucky Baskhar",
       rating: "9.3/10",
@@ -250,29 +252,30 @@ export default function StoreMovies() {
     },
 
     {
-      title: "Sankranthiki Vasthunnam",
-      rating: "8.5/10", // Rating not available yet
+      title: "Mr. Perfect",
+      rating: "9.7/10", // Rating not available yet
       votes: "157.2K Likes", // Votes not available yet
-      trailerUrl:"https://www.youtube.com/embed/hhqM-A7lMDM?si=ZC7MXMaElWxsn32Q",
-      genre: "Action/Drama",
-      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/sankranthiki-vasthunam-et00418119-1731656543.jpg", // Placeholder poster image
-      formats: ["2D", "3D"],
+      trailerUrl:"https://www.youtube.com/embed/KoLsNVB6t_c?si=0S4C57qiIsAjDFRG",
+      genre: "Comedy,Romantic",
+      poster:"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSEGjZBgc9s6_XyKl7Qo-mUKWgnnnmY9cu58O8FLKTOn0QPKhZ7O8uYChQGMPZ1GGug4szi", // Placeholder poster image
+      formats: ["2D"],
       languages: ["Telugu"],
-      duration: "2h 10m",
-      releaseDate: "14 Jan 2025",
-      ageRating: "UA+",
-      description:"A gripping story of a man who rises from humble beginnings to challenge societal norms and fight for justice during a festive season.",
+      duration: "2h 24m",
+      releaseDate: "21 Apr 2011",
+      ageRating: "U",
+      description:"Vicky (Prabhas) believes that one should be oneself in a relationship and one shouldnt change one`s orientation for the sake of the partner. Vicky and Priya (Kajal Agarwal) are childhood friends and they like each other. Their parents want to marry them off. But Vicky feels that Priya is a not choice for him as she is willing to sacrifice all her comforts for him. Meanwhile, Vicky meets Maggy who has the same taste and lifestyle orientation. Both of them fall in love. The rest of the story is all about how Vicky realises that adjustment is the essence of any blissful relationship.",
       cast: [
         {
-          name: "Daggubati Venkatesh as YD Raju",
-          image:"https://in.bmscdn.com/iedb/artist/images/website/poster/large/daggubati-venkatesh-2447-1666010853.jpg",
+          name: "Prabhas",
+          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/prabhas-1708-1686915417.jpg",
         },
         {
-          name: "Aishwarya Rajesh as Bhagya Lakshmi",
-          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/aishwarya-rajesh-1048096-1680242348.jpg",
+          name: "Kajal Aggarwal",
+          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/kajal-aggarwal-1051555-19-09-2017-10-38-45.jpg",
         },
       ],
     },
+
     {
       title: "Daaku Maharaaj",
       rating: "8.2/10",
@@ -349,54 +352,54 @@ export default function StoreMovies() {
     },
 
     {
-      title: "Animal",
+      title: "Mem Famous",
       rating: "8.2/10",
-      votes: "400.4K Votes",
-      trailerUrl:"https://www.youtube.com/embed/YD7b4gU0HWQ?si=Bz1Zd--pEVZbdkmV",
-      genre: "Action/Crime/Drama",
-      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/animal-et00311762-1672646524.jpg",
-      formats: ["2D", "IMAX 2D"],
-      languages: ["Telugu", "Hindi", "Tamil", "Malayalam", "Kannada"],
-      duration: "3h 21m",
-      releaseDate: "1 Dec 2023",
-      ageRating: "A",
-      description:"A gritty tale of a man battling the scars of his past while standing up against a powerful underworld crime syndicate.",
+      votes: "200K Votes",
+      trailerUrl:"https://www.youtube.com/embed/eQSWfUKi6DE?si=-ZMk4lADL-I_w3DS",
+      genre: "Comedy,Drama,Romantic",
+      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mem-famous-et00357552-1681789372.jpg",
+      formats: ["2D"],
+      languages: ["Telugu"],
+      duration: "2h 30m",
+      releaseDate: "26 May 2023",
+      ageRating: "UA",
+      description:"Mai, Bali and Durga, the musketeer trio from Bandanarsampally located in rural Telangana find passion, love and purpose in this coming-of-age movie.",
       cast: [
         {
-          name: "Ranbir Kapoor",
-          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/ranbir-kapoor-2817-1691565170.jpg",
+          name: "Sumanth Prabhas as Mahesh",
+          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/sumanth-prabhas-2027341-1681729428.jpg",
         },
         {
-          name: "Rashmika Mandanna",
+          name: "Saarya Laxman as Mounika",
           image:
-            "https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/rashmika-mandanna-1076783-28-12-2016-12-20-39.jpg",
+            "https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/saarya-laxman-2027550-1682487284.jpg",
         },
       ],
     },
 
     {
-      title: "Salaar: Cease Fire - Part 1",
-      rating: "9.1/10",
-      votes: "650.3K Votes",
-      trailerUrl:"https://www.youtube.com/embed/Joo_jE8kMDg?si=qnOzbApUPfKIOvxs",
-      genre: "Action/Thriller",
-      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/salaar-cease-fire--part-1-et00301886-1702971289.jpg",
-      formats: ["2D", "IMAX 2D"],
-      languages: ["Telugu", "Hindi", "Tamil", "Malayalam", "Kannada"],
-      duration: "2h 55m",
-      releaseDate: "22 Dec 2023",
-      ageRating: "A",
-      description:"An explosive thriller showcasing the rise of a formidable warrior who takes on an empire to protect his people.",
+      title: "Janaka Aithe Ganaka",
+      rating: "8.9/10",
+      votes: "65K Votes",
+      trailerUrl:"https://www.youtube.com/embed/6eGXENFS024?si=2m5S-In6sHQYM-Tm",
+      genre: "Comedy,Drama",
+      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/janaka-aithe-ganaka-et00410356-1725352531.jpg",
+      formats: ["2D"],
+      languages: ["Telugu"],
+      duration: "2h 18m",
+      releaseDate: "12 Oct 2024",
+      ageRating: "UA",
+      description:"Janaka Aithe Ganaka is a Telugu movie starring Suhas, Sangeerthana, Venalla Kishore and Rajendra Prasad in prominent roles. It is written and directed by Sandeep Reddy Bandla.",
       cast: [
         {
-          name: "Prabhas",
+          name: "Suhas",
           image:
-            "https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/prabhas-1708-1686915417.jpg",
+            "https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/suhas-6328-27-07-2021-08-32-07.jpg",
         },
         {
-          name: "Shruti Haasan",
+          name: "Sangeerthana Vipin",
           image:
-            "https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/shruti-haasan-29670-18-09-2017-05-02-43.jpg",
+            "https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/sangeerthana-vipin-2026566-1684838611.jpg",
         },
       ],
     },
@@ -501,26 +504,26 @@ export default function StoreMovies() {
     },
 
     {
-      title: "Baby John",
-      rating: "7.3/10",
+      title: "Orange",
+      rating: "8.9/10",
       votes: "88.5 Likes",
-      trailerUrl:"https://www.youtube.com/embed/qyRn3rPRw8w?si=lOMvDjN_AEx4cOhx",
-      genre: "Action/Thriller",
-      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/baby-john-et00386190-1733985497.jpg",
+      trailerUrl:"https://www.youtube.com/embed/_FrmfC5_Pv8?si=fn1nsu3XZCVvgcKa",
+      genre: "Drama,Romantic",
+      poster:"https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/orange-telugu-et00005527-1738763120.jpg",
       formats: ["2D"],
-      languages: ["Hindi"],
+      languages: ["Telugu"],
       duration: "2h 41m",
-      releaseDate: "25 Dec 2024",
-      ageRating: "UA16+",
-      description:"A gripping action-thriller revolving around a mysterious man and his dark past.",
+      releaseDate: "26 Nov 2010",
+      ageRating: "U",
+      description:"After going through a heartbreak, a man who does not believe in love gets in a relationship with a young woman. But when she asks him to be with her forever, he hesitates to accept her proposal.",
       cast: [
         {
-          name: "Varun dhawan",
-          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/varun-dhawan-21064-12-09-2017-02-22-38.jpg",
+          name: "Ram Charan",
+          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/ram-charan-teja-1046368-19-09-2017-02-37-43.jpg",
         },
         {
-          name: "Keerthy Suresh",
-          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/keerthy-suresh-1053454-24-03-2017-17-42-15.jpg",
+          name: "Genelia Deshmukh",
+          image:"https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/genelia-d-souza-730-24-03-2017-17-29-08.jpg",
         },
       ],
     },

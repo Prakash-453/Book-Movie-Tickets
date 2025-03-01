@@ -5,23 +5,23 @@ body, html {
 }
 
 /* Header */
-.header {
+.Header {
   display: flex;
   align-items: center;
   justify-content: space-around; 
   padding: 10px 20px;
   background-color: #f8f9fa;
   gap: 20px; 
-  background-color: rgb(224, 9, 9);
+  background-color: rgb(9, 181, 224);
 }
 
-.header .logo {
+.Header .logo {
   font-size: 1.5rem;
   font-weight: bold;
   color:white;
 }
 
-.header input {
+.Header input {
   width: 50%; 
   padding: 10px;
   border: 1px solid #ccc;
@@ -52,49 +52,75 @@ body, html {
   cursor: pointer;
 }
 
-/* Movies Section */
 .movies-section {
   padding: 40px;
+  background-color: #f8f9fa;
 }
 
 .movies-section h2 {
   margin-bottom: 20px;
   font-weight: bold;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
 }
 
+/* Grid Layout */
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 0 10px;
+  justify-content: center;
+}
+
+/* Movie Card Styling */
+.movie-card {
+  background: #ffffff;
+  border-radius: 10
+  px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Movie Poster */
+.movie-poster {
+  text-align: center;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .movie-poster img {
-  max-width: 344px;
-  text-align: center;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
+  max-height: 350px;
   object-fit: cover;
+  border-radius: 12px 12px 0 0;
 }
 
-.movie-poster {
-  text-align: center;
-}
-
+/* Movie Info */
 .movie-info {
-  padding: 8px;
+  padding: 12px;
+  text-align: center;
 }
 
 .movie-info h4 {
-  margin: 0 0 10px 0;
-  font-size: 17px;
+  margin: 0;
+  font-size: 1.2rem;
   font-weight: bold;
-  text-align: center;
+  color: #222;
 }
 
 .movie-info p {
   margin: 5px 0;
-  color: #555;
-  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 mark {
@@ -131,14 +157,14 @@ mark {
   background-color: #f9f9f9;
 }
 
-.headerr {
+.Events {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.headerr h2 {
+.Events h2 {
   font-size: 24px;
   font-weight: bold;
   margin: 0;
@@ -146,7 +172,7 @@ mark {
 
 .see-all {
   background: none;
-  color: #007bff;
+  color: #09B5E0;
   border: none;
   font-size: 16px;
   cursor: pointer;
@@ -251,7 +277,7 @@ mark {
 
 .see-all {
   background: none;
-  color: #007bff;
+  color: #09B5E0;
   border: none;
   font-size: 16px;
   cursor: pointer;
@@ -334,8 +360,6 @@ mark {
   color: #666;
 }
 
-
-
 .footer {
   background-color: #1d1d1d;
   color: #ccc;
@@ -343,8 +367,6 @@ mark {
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -360,16 +382,17 @@ mark {
 .list-your-show .icon-text {
   display: flex;
   align-items: center;
-  gap: 15px;
+  
 }
 
 .list-your-show img {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
 
 .list-your-show p {
-  font-size: 14px;
+  font-size: 20px;
+  margin-top: 14px;
   color: #fff;
 }
 
@@ -386,6 +409,7 @@ mark {
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
+  margin-left: 10px;
   transition: background-color 0.3s ease;
 }
 
@@ -414,7 +438,7 @@ mark {
 }
 
 .divider h2 span {
-  color: red;
+  color: #09B5E0;
 }
 
 .social-icons {
@@ -466,16 +490,16 @@ mark {
   font-weight: bold;
   color: #999;
 }
+
 /* Input field adjustments for small screens */
 @media screen and (max-width: 600px) {
-  .header {
+  .Header {
     flex-direction: column;
-    gap: 3px;
+    gap: 15px;
   }
 
-  .header input {
+  .Header input {
     width: 90%; /* Adjust width to fit within the container */
-    margin: 10px auto; /* Center the input field */
     padding: 8px; /* Reduce padding for smaller screens */
     font-size: 14px; /* Adjust font size for better readability */
   }
@@ -483,7 +507,7 @@ mark {
   .city-select {
     text-align: center;
   }
-  .header .logo {
+  .Header .logo {
     text-align: center;
   }
   .bar {
@@ -491,3 +515,4 @@ mark {
   }
   
 }
+

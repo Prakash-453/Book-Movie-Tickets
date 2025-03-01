@@ -15,7 +15,7 @@
 
 h3 {
   margin: 20px 0;
-  color: #f84464;
+  color: rgb(9, 181, 224);
 }
 
 .confirm-button,
@@ -29,13 +29,14 @@ h3 {
 }
 
 .confirm-button {
-  background-color: #f84464;
+  background-color: rgb(9, 181, 224);
   color: white;
 }
 
 
 .confirm-button:hover {
-  background-color: #d73b57;
+  background-color: rgb(9, 181, 224);
+  
 }
 
 .back-button:hover {
@@ -53,7 +54,7 @@ h3 {
 
 .h2 {
   text-align: center;
-  color: #F84464;
+  color: rgb(9, 181, 224);
 }
 
 .summary-container {
@@ -79,7 +80,7 @@ h3 {
 }
 
 .proceed-button {
-  background-color: #F84464;
+  background-color: rgb(9, 181, 224);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -127,7 +128,7 @@ h3 {
 }
 
 .modal-button {
-  background-color: #f84464;
+  background-color: rgb(9, 181, 224);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -137,6 +138,7 @@ h3 {
 }
 
 .modal-button:hover {
-  background-color: #e73b59;
+  background-color: rgb(9, 181, 224);
+  
 }
 

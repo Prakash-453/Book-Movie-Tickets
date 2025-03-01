@@ -1,6 +1,6 @@
 #movie-details-page {
   padding: 2rem;
-  background-color: #f4f4f4;
+  background-color: hsl(0, 0%, 96%);
 }
 
 /* Movie Details Container */
@@ -10,7 +10,6 @@
   gap: 1rem;
   background: #fff;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +56,7 @@
 .book-ticket-button {
   margin-top: 1rem;
   padding: 0.8rem 1.5rem;
-  background-color: #ff4c4c;
+  background-color: rgb(9, 181, 224);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -67,7 +66,7 @@
 }
 
 .book-ticket-button:hover {
-  background-color: #d43f3f;
+  background-color: rgb(9, 181, 224);
 }
 
 /* Cast Section */
@@ -116,22 +115,27 @@
 
   #movie-info h1 {
     font-size: 1.8rem;
+    color: #09B5E0;
   }
 
   .rating-section {
     justify-content: center;
+    color: #09B5E0;
   }
 
   .rating {
     font-size: 1.3rem;
+    color: #09B5E0;
   }
 
   .votes {
     font-size: 1rem;
+    color: #09B5E0;
   }
 
   .additional-info p {
     font-size: 0.95rem;
+    color: #09B5E0;
   }
 
   .book-ticket-button {
@@ -142,6 +146,12 @@
 
   iframe {
     height: 250px;
+  }
+
+  #movie-details-container{
+    background-image: url("../../Assests/Projector.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   }
 }
  

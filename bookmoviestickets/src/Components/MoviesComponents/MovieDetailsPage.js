@@ -66,11 +66,11 @@ function MovieDetailsPage() {
         </div>
       </div>
 
-      <h3 style={{ marginTop: "20px" }}>
+      <h3 style={{ marginTop: "20px",color: "rgb(13, 146, 199)"}}>
         <strong>About the Movie</strong>
       </h3>
       <p>{movie.description}</p>
-      <h3>
+      <h3 style={{color: "rgb(13, 146, 199)"}}>
         <b>Cast</b>
       </h3>
       <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
@@ -90,6 +90,7 @@ function MovieDetailsPage() {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Trailer Modal"
+        ariaHideApp={false} 
         style={{
           content: {
             inset: "50px",
@@ -118,7 +119,7 @@ function MovieDetailsPage() {
         <h2>{movie.title} - Trailer</h2>
         <iframe
           width="100%"
-          height="400vh"
+          height="400px"
           src={movie.trailerUrl}
           title="Trailer"
           frameBorder="0"

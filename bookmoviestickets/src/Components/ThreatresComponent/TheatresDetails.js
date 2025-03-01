@@ -85,7 +85,7 @@ const MovieShowtimes = () => {
   return (
     <div>
       <header className="header">
-        <div className="logo">BookMovieTickets</div>
+        <div className="logo">MovieVista</div>
         <input
           type="text"
           placeholder="Search for Movies, theaters..etc"

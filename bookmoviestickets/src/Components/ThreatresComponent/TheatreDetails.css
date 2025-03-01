@@ -5,7 +5,7 @@
   padding: 10px 20px;
   background-color: #f8f9fa;
   gap: 20px; 
-  background-color: rgb(224, 9, 9);
+  background-color: rgb(9, 181, 224);
 }
 
 .header .logo {
@@ -74,13 +74,13 @@
 }
 
 .date-button.selected {
-  background-color: #ff4c4c;
+  background-color: rgb(9, 181, 224);
   color: white;
   border: none;
 }
 
 .date-button:hover {
-  background-color: #ffb3b3;
+  background-color: lightskyblue;
 }
 
 .date-button div {
@@ -91,7 +91,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: -70px;
+  margin-top: -53px;
   gap: 10px;
 }
 
@@ -195,7 +195,7 @@
 }
 
 .contact-btn {
-  background-color: #ff4c61;
+  background-color: rgb(9, 181, 224);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -206,7 +206,7 @@
 }
 
 .contact-btn:hover {
-  background-color: #ff2b3d;
+  background-color: rgb(9, 181, 224);
 }
 
 .divider {
@@ -340,4 +340,28 @@
   .modern-offcanvas {
     width: 80%; /* Adjust off-canvas width for smaller screens */
   }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header input {
+    width: 75%; /* Adjust width to fit within the container */
+    padding: 8px; /* Reduce padding for smaller screens */
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+
+  .city-select {
+    text-align: center;
+  }
+  .header .logo {
+    text-align: center;
+  }
+  .bar {
+    display: visible;
+  }
+  
 }
