@@ -174,4 +174,5 @@ The Online Movie Ticket Booking System offers a modern, secure, and user-friendl
 
 Project Preview
 
+
 ![alt text](<Project Execution Video.gif>)
