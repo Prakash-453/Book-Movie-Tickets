@@ -5,7 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { useNavigate } from "react-router-dom";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { collection, getDocs,query } from "firebase/firestore";
-import db from "../MoviesData/MoviesFirebase.js"; // Firestore instance
+import db from "../MoviesData/MoviesFirebase"; // Firestore instance
 import MovieCard from "./MovieCard";
 import "./HomePage.css";
 

@@ -2,13 +2,13 @@ import { initializeApp, getApps } from "firebase/app";
 import {getFirestore} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBwV4xg_RShSMBssV2NHlLbwfdFOXESr98",
-  authDomain: "theatresdata-baab1.firebaseapp.com",
-  projectId: "theatresdata-baab1",
-  storageBucket: "theatresdata-baab1.firebasestorage.app",
-  messagingSenderId: "328168250758",
-  appId: "1:328168250758:web:420e5c351c7009f78ee007",
-  measurementId: "G-3CHFFK1YHP"
+  apiKey: "AIzaSyB9Q4Dje1Et1NPoLarfIbws3RU1SXdQOLE",
+  authDomain: "theatres-475e5.firebaseapp.com",
+  projectId: "theatres-475e5",
+  storageBucket: "theatres-475e5.firebasestorage.app",
+  messagingSenderId: "422591445124",
+  appId: "1:422591445124:web:166972718463f03c97ead1",
+  measurementId: "G-9R6L9TPW2E"
 };
 
 // Initialize Firebase

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./Components/HomeComponent/HomePage";
 import MovieDetailsPage from "./Components/MoviesComponents/MovieDetailsPage";
 import MovieShowtimes from "./Components/ThreatresComponent/TheatresDetails";
+import Theatres from "./Components/ThreatresData/ThreatreData";
 import Seats1 from "./Components/SeatsComponent/Seats1";
 import Seats2 from "./Components/SeatsComponent/Seats2";
 import BookingSummary from "./Components/BookingSummary/BookingSummary"
