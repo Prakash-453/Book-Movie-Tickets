@@ -58,7 +58,7 @@ const Seats2 = () => {
       booked.add(`${randomRow}${randomCol}`);
     }
     setBookedSeats(Array.from(booked));
-  }, []);
+  }, [rows]);
 
   const toggleSeat = (row, col) => {
     const seat = `${row}${col}`;
